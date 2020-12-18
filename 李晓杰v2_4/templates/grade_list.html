@@ -1,0 +1,30 @@
+{% extends "base.html" %} {% block styles %}
+<link href="/grade_list.css" rel="stylesheet" />
+{% endblock %} {% block page_content %}
+<div class="paper">
+    <form class = "lookgrade">
+        <!--成绩单学生只可以查看，不可以做任何修改-->
+        <label>学生：</label>
+        <select name="stu_sn" class="stu_sn">
+            <option value="">--选择--</option>
+            {% for stu in students %}
+            <option value="{{stu.stu_sn}}">
+                {{stu.stu_name}}({{stu.stu_sn}})
+            </option>
+            {% endfor %}
+        </select>
+
+        <label>课程：</label>
+        <select name="cou_sn" class="cou_sn">
+            <option value="1">--可不选择--</option>
+            {% for item in courses %}
+            <option value="{{item.cou_sn}}">
+                {{item.cou_name}}({{item.cou_sn}})
+            </option>
+            {% endfor %}
+        </select>
+        <a class = "checkgradebtn" >查询成绩</a>
+    </form>
+</div>
+<script src="/grade.js"></script>
+{% endblock %}
